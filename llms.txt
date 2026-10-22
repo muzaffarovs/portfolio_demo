@@ -1,5 +1,7 @@
 # Rajab Muzaffarov
 
+Also written: Muzaffarov Rajab, Ражаб Музаффаров (Cyrillic). Username: muzaffarovs.
+
 > Full-stack developer in Tashkent, Uzbekistan with 2+ years of experience building production web applications with React, Next.js and TypeScript.
 
 Website: https://muzaffarov.uz/

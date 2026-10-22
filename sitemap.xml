@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://muzaffarov.uz/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <image:image>
       <image:loc>https://muzaffarov.uz/avatar.webp</image:loc>
     </image:image>
@@ -13,6 +13,6 @@
   </url>
   <url>
     <loc>https://muzaffarov.uz/Rajab-Muzaffarov-CV.pdf</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-10-21</lastmod>
   </url>
 </urlset>
