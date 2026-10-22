@@ -29,3 +29,14 @@ Résumé (PDF): https://muzaffarov.uz/Rajab-Muzaffarov-CV.pdf
 - Authentication: Supabase Auth, JWT, HTTP-only cookies
 - AI and automation: AI API integrations, n8n, Telegram Bot API, social media API integrations
 - DevOps and tools: Git, GitHub, Docker, Vercel, Cloudflare, Linux/WSL
+
+## Pages
+
+- About Rajab Muzaffarov: https://muzaffarov.uz/about/
+- All work: https://muzaffarov.uz/work/
+- Frutera case study: https://muzaffarov.uz/work/frutera/
+- AI Avtojavob / Aylo case study: https://muzaffarov.uz/work/ai-avtojavob-aylo/
+- Sifat Nazorat case study: https://muzaffarov.uz/work/sifat-nazorat/
+- Cresta case study: https://muzaffarov.uz/work/cresta/
+- T-SX case study: https://muzaffarov.uz/work/t-sx/
+- Fimtext case study: https://muzaffarov.uz/work/fimtext/
