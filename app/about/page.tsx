@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Contact from "@/components/Contact";
 import JsonLd from "@/components/JsonLd";
-import { projects } from "@/lib/projects";
-import { CV, NAME, OG_IMAGE, PERSON_ID, SITE, WEBSITE_ID, breadcrumbs, person } from "@/lib/site";
+import Sec from "@/components/Sec";
+import { NAME, OG_IMAGE, PERSON_ID, SITE, WEBSITE_ID, breadcrumbs, person } from "@/lib/site";
 
 const title = "About";
 const description =
@@ -44,23 +44,18 @@ export default function About() {
         person,
         breadcrumbs([{ name: "About", path: "/about/" }]),
       ]} />
-      <header className="page-head">
-        <div className="wrap">
-          <ol className="crumbs"><li><Link href="/">Index</Link></li><li>About</li></ol>
-          <h1 className="display display-page">Rajab Muzaffarov</h1>
-        </div>
-        <div className="wrap grid">
-          <p className="label col-label" lang="uz-Cyrl">Ражаб Музаффаров</p>
-          <p className="statement">
-            Full-stack developer in Tashkent. I&apos;ve been shipping production web apps for a little over two years, mostly React and
-            Next.js in TypeScript, with Node and Postgres or MongoDB behind them.
-          </p>
-        </div>
+      <header className="page-head wrap">
+        <h1 className="display display-page">Rajab<br />Muzaffarov</h1>
+        <p className="page-sub" lang="uz-Cyrl">Ражаб Музаффаров</p>
+        <p className="lede">
+          Full-stack developer in Tashkent. A little over two years of production work, mostly React and Next.js in TypeScript, with
+          Node and Postgres or MongoDB behind them.
+        </p>
       </header>
 
-      <section className="section" aria-labelledby="now-h">
-        <div className="wrap grid">
-          <h2 className="label col-label" id="now-h">Now</h2>
+      <section className="block" aria-labelledby="now-h">
+        <div className="wrap">
+          <Sec id="now-h" title="Now" />
           <div className="prose reveal">
             <p>I work at <a href="https://cresta.uz/" target="_blank" rel="noopener">Cresta</a>. I built the company site and its Telegram bot, worked
               on the CRM, and built <Link href="/work/ai-avtojavob-aylo/">AI Avtojavob</Link>, which answers Instagram and Telegram customers in their DMs.
@@ -71,30 +66,12 @@ export default function About() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="proj-h">
-        <div className="wrap grid">
-          <h2 className="label col-label" id="proj-h">Projects</h2>
-          <ol className="built">
-            {projects.map((p, k) => (
-              <li key={p.slug} className="reveal"><span>{String(k + 1).padStart(2, "0")}</span><p><Link href={`/work/${p.slug}/`}>{p.name}</Link>. {p.summary}</p></li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="section" aria-labelledby="stack-h">
-        <div className="wrap grid">
-          <h2 className="label col-label" id="stack-h">Stack</h2>
+      <section className="block" aria-labelledby="stack-h">
+        <div className="wrap">
+          <Sec id="stack-h" title="Stack" />
           <dl className="rows reveal">
             {stack.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
           </dl>
-        </div>
-      </section>
-
-      <section className="section" aria-labelledby="cv-h">
-        <div className="wrap grid">
-          <h2 className="label col-label" id="cv-h">Résumé</h2>
-          <p className="prose reveal"><a href={CV} target="_blank" rel="noopener">Download the PDF</a></p>
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Contact from "@/components/Contact";
 import JsonLd from "@/components/JsonLd";
+import Sec from "@/components/Sec";
 import WorkIndex from "@/components/WorkIndex";
 import { projects } from "@/lib/projects";
 import { NAME, OG_IMAGE, PERSON_ID, SITE, WEBSITE_ID, breadcrumbs } from "@/lib/site";
@@ -35,18 +35,15 @@ export default function Work() {
         },
         breadcrumbs([{ name: "Work", path: "/work/" }]),
       ]} />
-      <header className="page-head">
-        <div className="wrap">
-          <ol className="crumbs"><li><Link href="/">Index</Link></li><li>Work</li></ol>
-          <h1 className="display display-page">Work</h1>
-        </div>
-        <div className="wrap grid">
-          <p className="label col-label">{String(projects.length).padStart(2, "0")} projects</p>
-          <p className="statement">Things I&apos;ve built or helped build that are running in production.</p>
-        </div>
+      <header className="page-head wrap">
+        <h1 className="display display-page">Work</h1>
+        <p className="page-sub">Built or helped build, all running in production.</p>
       </header>
-      <section className="section section-tight" aria-label="Projects">
-        <div className="wrap"><WorkIndex summaries /></div>
+      <section className="block" aria-label="Projects">
+        <div className="wrap">
+          <Sec title="Projects" note={String(projects.length).padStart(2, "0")} as="p" />
+          <WorkIndex />
+        </div>
       </section>
       <Contact />
     </main>

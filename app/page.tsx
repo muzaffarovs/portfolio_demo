@@ -1,17 +1,12 @@
 import Link from "next/link";
 import Contact from "@/components/Contact";
 import JsonLd from "@/components/JsonLd";
+import Sec from "@/components/Sec";
 import WorkIndex from "@/components/WorkIndex";
-import { getProject, projects } from "@/lib/projects";
+import { projects } from "@/lib/projects";
 import { CV, NAME, PERSON_ID, SITE, WEBSITE_ID, person, website } from "@/lib/site";
 
-const STACK: [string, string[]][] = [
-  ["Languages", ["TypeScript", "JavaScript", "SQL"]],
-  ["Frontend", ["React", "Next.js", "Tailwind CSS", "TanStack Query", "Zustand", "Zod"]],
-  ["Backend", ["Node.js", "Express", "REST APIs", "Prisma", "Telegram Bot API", "n8n"]],
-  ["Data", ["PostgreSQL", "MongoDB", "Supabase"]],
-  ["Shipping", ["Docker", "Vercel", "Cloudflare", "Linux", "Git"]],
-];
+const STACK = ["TypeScript", "React", "Next.js", "Node.js", "Express", "PostgreSQL", "MongoDB", "Supabase", "Prisma", "Tailwind CSS", "Telegram Bot API", "Docker"];
 
 const graph = [
   website,
@@ -37,7 +32,6 @@ const graph = [
 ];
 
 export default function Home() {
-  const frutera = getProject("frutera")!;
   return (
     <main>
       <JsonLd graph={graph} />
@@ -63,42 +57,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="work-h">
-        <div className="wrap grid section-head">
-          <h2 className="label col-label" id="work-h">Selected work</h2>
-          <p className="count">{String(projects.length).padStart(2, "0")} projects</p>
-        </div>
-        <div className="wrap"><WorkIndex /></div>
-      </section>
-
-      <section className="section" aria-labelledby="fig-h">
-        <div className="wrap grid">
-          <h2 className="label col-label" id="fig-h">In figures</h2>
-          <div className="figures-body">
-            <p className="figures-intro reveal">
-              <Link href="/work/frutera/">Frutera</Link>, the export ERP I built with {frutera.team}. It reads customs papers and Telegram
-              chats and reconciles every client ledger overnight.
-            </p>
-            <dl className="figures reveal">
-              {frutera.stats!.map(s => (
-                <div key={s.label}><dt>{s.label}{s.note && <> <small>{s.note}</small></>}</dt><dd>{s.value}</dd></div>
-              ))}
-            </dl>
-          </div>
+      <section className="block" aria-labelledby="work-h">
+        <div className="wrap">
+          <Sec id="work-h" title="Work" note={String(projects.length).padStart(2, "0")} />
+          <WorkIndex />
         </div>
       </section>
 
-      <section className="section" id="stack" aria-labelledby="stack-h">
-        <div className="wrap grid">
-          <h2 className="label col-label" id="stack-h">Stack</h2>
-          <div className="stack reveal">
-            {STACK.map(([k, items]) => (
-              <div key={k}>
-                <h3>{k}</h3>
-                <ul>{items.map(i => <li key={i}>{i}</li>)}</ul>
-              </div>
-            ))}
-          </div>
+      <section className="block" id="stack" aria-labelledby="stack-h">
+        <div className="wrap">
+          <Sec id="stack-h" title="Stack" />
+          <p className="big-line reveal">{STACK.join(", ")}.</p>
         </div>
       </section>
 
