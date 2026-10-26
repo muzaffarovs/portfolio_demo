@@ -1,14 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Grenze_Gotisch, Martian_Mono, Onest } from "next/font/google";
+import { IBM_Plex_Mono, Inter_Tight } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Effects from "@/components/Effects";
 import { GITHUB, KEYWORDS, LINKEDIN, NAME, OG_IMAGE, SITE, TELEGRAM } from "@/lib/site";
 import "./globals.css";
 
-const grenze = Grenze_Gotisch({ subsets: ["latin"], variable: "--font-grenze", display: "swap" });
-const onest = Onest({ subsets: ["latin", "cyrillic"], variable: "--font-onest", display: "swap" });
-const martian = Martian_Mono({ subsets: ["latin", "cyrillic"], variable: "--font-martian", display: "swap", axes: ["wdth"] });
+const sans = Inter_Tight({ subsets: ["latin", "cyrillic"], variable: "--font-sans", display: "swap" });
+const mono = IBM_Plex_Mono({ subsets: ["latin", "cyrillic"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
 
 const description =
   "Rajab Muzaffarov is a full-stack developer in Tashkent, Uzbekistan, building production web apps with React, Next.js and TypeScript: AI automation, ERPs and CRMs.";
@@ -62,16 +61,19 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#07060A",
-  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F1EFEA" },
+    { media: "(prefers-color-scheme: dark)", color: "#111110" },
+  ],
+  colorScheme: "light dark",
 };
 
 // Applies the saved theme before first paint so there is no flash.
-const themeScript = `try{var t=localStorage.getItem('rm-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}`;
+const themeScript = `document.documentElement.classList.add('js');try{var t=localStorage.getItem('rm-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${grenze.variable} ${onest.variable} ${martian.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="me" href={GITHUB} />
@@ -83,7 +85,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         {children}
         <Footer />
-        <div className="ritual-flash" aria-hidden="true"><b>\m/</b></div>
         <Effects />
       </body>
     </html>

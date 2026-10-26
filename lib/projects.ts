@@ -17,6 +17,8 @@ export type Project = {
   role: string;
   live?: { label: string; url: string };
   team?: string;
+  /** screenshot of the live product, 1440×900 */
+  image?: { src: string; alt: string };
 };
 
 export const projects: Project[] = [
@@ -137,6 +139,7 @@ export const projects: Project[] = [
     stack: ["News CMS", "Photo gallery", "Admin panel"],
     role: "Full-stack developer",
     live: { label: "t-sx.uz", url: "https://t-sx.uz/" },
+    image: { src: "/work/t-sx.webp", alt: "The t-sx.uz home page: the Toshkent Sinov Xizmati name set large over 3D molecules, with a navigation bar in Uzbek." },
   },
   {
     slug: "fimtext",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Contact from "@/components/Contact";
 import JsonLd from "@/components/JsonLd";
+import WorkIndex from "@/components/WorkIndex";
 import { projects } from "@/lib/projects";
 import { NAME, OG_IMAGE, PERSON_ID, SITE, WEBSITE_ID, breadcrumbs } from "@/lib/site";
 
@@ -34,26 +35,18 @@ export default function Work() {
         },
         breadcrumbs([{ name: "Work", path: "/work/" }]),
       ]} />
-      <header className="wrap page-head">
-        <ol className="crumbs"><li><Link href="/">Home</Link></li><li>Work</li></ol>
-                <h1 className="page-title">Work</h1>
-        <p className="page-lede">Things I&apos;ve built or helped build that are running in production.</p>
+      <header className="page-head">
+        <div className="wrap">
+          <ol className="crumbs"><li><Link href="/">Index</Link></li><li>Work</li></ol>
+          <h1 className="display display-page">Work</h1>
+        </div>
+        <div className="wrap grid">
+          <p className="label col-label">{String(projects.length).padStart(2, "0")} projects</p>
+          <p className="statement">Things I&apos;ve built or helped build that are running in production.</p>
+        </div>
       </header>
-      <section className="wrap section" aria-label="Projects">
-        <ul className="work-list">
-          {projects.map(p => (
-            <li key={p.slug} className="reveal">
-              <Link href={`/work/${p.slug}/`}>
-                <div>
-                  <p className="client">{p.client} · {p.category}</p>
-                  <h2>{p.name}{p.nameSuffix && <> <span>{p.nameSuffix}</span></>}</h2>
-                </div>
-                <p className="desc">{p.summary}</p>
-                <span className="arr" aria-hidden="true">→</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <section className="section section-tight" aria-label="Projects">
+        <div className="wrap"><WorkIndex summaries /></div>
       </section>
       <Contact />
     </main>

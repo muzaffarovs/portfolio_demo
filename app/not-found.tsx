@@ -5,11 +5,13 @@ export const metadata: Metadata = { title: "Page not found", alternates: { canon
 
 export default function NotFound() {
   return (
-    <main className="wrap lost">
-      <div>
-        <h1>4<b>0</b>4</h1>
-        <p>This path leads only to the void</p>
-        <Link className="btn primary" href="/">Back to muzaffarov.uz</Link>
+    <main className="page-head lost">
+      <div className="wrap">
+        <h1 className="display display-page">404</h1>
+      </div>
+      <div className="wrap grid">
+        <p className="label col-label">Not found</p>
+        <p className="statement">There&apos;s nothing at this address. <Link href="/">Back to the index</Link> or see the <Link href="/work/">work</Link>.</p>
       </div>
     </main>
   );
