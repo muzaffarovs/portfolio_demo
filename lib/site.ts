@@ -5,7 +5,7 @@ export const PHONE = "+998500049173";
 export const PHONE_PRETTY = "+998 50 004 91 73";
 export const GITHUB = "https://github.com/muzaffarovs";
 export const LINKEDIN = "https://www.linkedin.com/in/muzaffarov/";
-export const TELEGRAM = "https://t.me/urgeekboy";
+export const TELEGRAM = "https://t.me/unnohwn";
 export const CV = "/Rajab-Muzaffarov-CV.pdf";
 export const OG_IMAGE = "/og-image.png";
 
