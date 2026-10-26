@@ -17,7 +17,6 @@ Résumé (PDF): https://muzaffarov.uz/Rajab-Muzaffarov-CV.pdf
 - Frutera (Cresta Systems, team project with Ilyosbek Axmedjanov): export-logistics ERP that replaced the spreadsheets and group chats of an agricultural-export company. Ingests from watched Telegram groups (MTProto), the Uzbek customs portal (E-IMZO signature), Google Sheets and a WhatsApp bridge; Claude extracts shipments, declarations and payments; a nightly pass reconciles client ledgers. Next.js CRM (40 pages, 150 API endpoints, 38 PostgreSQL tables), Telegram Mini App and Android app for field entry. ~105k lines, 6 Docker services.
 - Cresta: corporate website, Telegram bot and CRM for a newly founded development company.
 - T-SX (Toshkent Sinov Xizmati): corporate website with a news CMS, photo gallery and admin interface.
-- Fimtext: landing page for a textile testing and quality-control laboratory.
 
 ## Skills
 
@@ -39,4 +38,3 @@ Résumé (PDF): https://muzaffarov.uz/Rajab-Muzaffarov-CV.pdf
 - Sifat Nazorat case study: https://muzaffarov.uz/work/sifat-nazorat/
 - Cresta case study: https://muzaffarov.uz/work/cresta/
 - T-SX case study: https://muzaffarov.uz/work/t-sx/
-- Fimtext case study: https://muzaffarov.uz/work/fimtext/

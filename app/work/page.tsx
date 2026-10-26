@@ -8,7 +8,7 @@ import { NAME, OG_IMAGE, PERSON_ID, SITE, WEBSITE_ID, breadcrumbs } from "@/lib/
 
 const title = "Work";
 const description =
-  "Projects by Rajab Muzaffarov: the Frutera export ERP, AI Avtojavob, Sifat Nazorat QR verification, and sites for Cresta, T-SX and Fimtext.";
+  "Projects by Rajab Muzaffarov: the Frutera export ERP, AI Avtojavob, Sifat Nazorat QR verification, and sites for Cresta and T-SX.";
 
 export const metadata: Metadata = {
   title,

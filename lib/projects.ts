@@ -141,24 +141,6 @@ export const projects: Project[] = [
     live: { label: "t-sx.uz", url: "https://t-sx.uz/" },
     image: { src: "/work/t-sx.webp", alt: "The t-sx.uz home page: the Toshkent Sinov Xizmati name set large over 3D molecules, with a navigation bar in Uzbek." },
   },
-  {
-    slug: "fimtext",
-    name: "Fimtext",
-    client: "Textile testing & QC laboratory",
-    category: "Landing page",
-    metaTitle: "Fimtext: textile lab landing page",
-    description:
-      "Landing page for Fimtext, a textile testing and quality-control laboratory: services, capabilities and contacts, on desktop and mobile.",
-    summary: "Landing page for a textile testing lab.",
-    lede:
-      "The landing page for a textile testing and quality-control lab, with its services, capabilities and contacts, built to read well on a phone.",
-    built: [
-      "The official landing page for the laboratory",
-      "Services, capabilities and company information, laid out for desktop and mobile",
-    ],
-    stack: ["Landing page", "Responsive UI"],
-    role: "Full-stack developer",
-  },
 ];
 
 export const getProject = (slug: string) => projects.find(p => p.slug === slug);
