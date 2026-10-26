@@ -37,7 +37,7 @@ export function initChrome(signal: AbortSignal) {
   signal.addEventListener("abort", () => clearInterval(id));
 }
 
-/** Runs on every route: scroll reveals and copy-email. */
+/** Runs on every route: scroll reveals. */
 export function initPage(signal: AbortSignal) {
   const els = $$(".reveal");
   if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
@@ -49,20 +49,4 @@ export function initPage(signal: AbortSignal) {
     els.forEach(e => io.observe(e));
     signal.addEventListener("abort", () => io.disconnect());
   }
-
-  const copy = $("#copy");
-  const toast = $("#toast");
-  copy?.addEventListener("click", async () => {
-    const email = copy.dataset.email || "";
-    try {
-      await navigator.clipboard.writeText(email);
-      if (toast) toast.textContent = "Copied";
-    } catch {
-      const sel = getSelection();
-      const mail = $(".mail");
-      if (sel && mail) { const r = document.createRange(); r.selectNodeContents(mail); sel.removeAllRanges(); sel.addRange(r); }
-      if (toast) toast.textContent = "Selected, press Ctrl/⌘ C";
-    }
-    setTimeout(() => { if (toast) toast.textContent = ""; }, 2200);
-  }, { signal });
 }

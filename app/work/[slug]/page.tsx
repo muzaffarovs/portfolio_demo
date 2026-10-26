@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Contact from "@/components/Contact";
 import JsonLd from "@/components/JsonLd";
-import Sec from "@/components/Sec";
+import Lead from "@/components/Lead";
 import { getProject, projects } from "@/lib/projects";
 import { NAME, OG_IMAGE, PERSON_ID, SITE, WEBSITE_ID, breadcrumbs } from "@/lib/site";
 
@@ -34,7 +34,6 @@ export default async function CaseStudy({ params }: Props) {
   const next = projects[(i + 1) % projects.length];
   const url = `${SITE}/work/${p.slug}/`;
   const fullName = p.nameSuffix?.startsWith("/") ? `${p.name} ${p.nameSuffix}` : p.name;
-  const n = (k: number) => String(k + 1).padStart(2, "0");
 
   return (
     <main>
@@ -65,61 +64,38 @@ export default async function CaseStudy({ params }: Props) {
         breadcrumbs([{ name: "Work", path: "/work/" }, { name: fullName, path: `/work/${p.slug}/` }]),
       ]} />
 
-      <header className="page-head wrap">
-        <p className="page-count"><Link href="/work/">Work</Link> {n(i)} / {String(projects.length).padStart(2, "0")}</p>
-        <h1 className="display display-page">{p.name}{p.nameSuffix?.startsWith("/") && <span> {p.nameSuffix}</span>}</h1>
-        <dl className="facts">
-          <div><dt>Client</dt><dd>{p.client}</dd></div>
-          <div><dt>Type</dt><dd>{p.category}</dd></div>
-          <div><dt>Role</dt><dd>{p.role}{p.team && <>, with {p.team}</>}</dd></div>
-          <div><dt>Live</dt><dd>{p.live ? <a href={p.live.url} target="_blank" rel="noopener">{p.live.label} ↗</a> : "Private"}</dd></div>
-        </dl>
-        <p className="lede">{p.lede}</p>
+      <header className="page-head">
+        <div className="wrap">
+          <h1 className="display display-page">{p.name}</h1>
+        </div>
+        <Lead label={p.category} links={[
+          ...(p.live ? [{ href: p.live.url, label: `${p.live.label} ↗`, external: true }] : []),
+          { href: `/work/${next.slug}/`, label: `Next: ${next.name}` },
+          { href: "/work/", label: "All work" },
+        ]}>
+          <p>{p.lede}</p>
+        </Lead>
       </header>
 
       {p.image && (
         <figure className="shot wrap reveal">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={p.image.src} alt={p.image.alt} width={1440} height={900} loading="eager" />
-          {p.live && <figcaption><span>{p.live.label}</span><span>Captured October 2026</span></figcaption>}
         </figure>
       )}
 
       {p.stats && (
-        <section className="block" aria-labelledby="fig-h">
-          <div className="wrap">
-            <Sec id="fig-h" title="Figures" />
+        <section className="block" aria-label="In figures">
+          <div className="wrap grid">
+            <p className="label col-label">Figures</p>
             <dl className="figures reveal">
-              {p.stats.map(s => <div key={s.label}><dd>{s.value}</dd><dt>{s.label}{s.note && <>, {s.note}</>}</dt></div>)}
+              {p.stats.map(s => <div key={s.label}><dd>{s.value}</dd><dt>{s.label}</dt></div>)}
             </dl>
           </div>
         </section>
       )}
 
-      <section className="block" aria-labelledby="built-h">
-        <div className="wrap">
-          <Sec id="built-h" title="What I built" note={String(p.built.length).padStart(2, "0")} />
-          <ol className="rows-n">
-            {p.built.map((t, k) => <li key={k} className="reveal"><span>{n(k)}</span><p>{t}</p></li>)}
-          </ol>
-        </div>
-      </section>
-
-      <section className="block" aria-labelledby="stack-h">
-        <div className="wrap">
-          <Sec id="stack-h" title="Stack" />
-          <p className="big-line reveal">{p.stack.join(", ")}.</p>
-        </div>
-      </section>
-
-      <nav className="next" aria-label="Next project">
-        <Link className="wrap" href={`/work/${next.slug}/`}>
-          <span className="next-label">Next</span>
-          <span className="next-name">{next.name}</span>
-        </Link>
-      </nav>
-
-      <Contact heading="p" />
+      <Contact />
     </main>
   );
 }

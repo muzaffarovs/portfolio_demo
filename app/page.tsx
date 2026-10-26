@@ -1,12 +1,9 @@
-import Link from "next/link";
 import Contact from "@/components/Contact";
 import JsonLd from "@/components/JsonLd";
-import Sec from "@/components/Sec";
+import Lead from "@/components/Lead";
 import WorkIndex from "@/components/WorkIndex";
 import { projects } from "@/lib/projects";
 import { CV, NAME, PERSON_ID, SITE, WEBSITE_ID, person, website } from "@/lib/site";
-
-const STACK = ["TypeScript", "React", "Next.js", "Node.js", "Express", "PostgreSQL", "MongoDB", "Supabase", "Prisma", "Tailwind CSS", "Telegram Bot API", "Docker"];
 
 const graph = [
   website,
@@ -43,32 +40,20 @@ export default function Home() {
             <span aria-hidden="true">Muzaffarov</span>
           </h1>
         </div>
-        <div className="wrap grid hero-foot">
-          <p className="label col-label">Index</p>
-          <p className="statement">
+        <Lead label="Index" links={[
+          { href: "/work/", label: "Selected work" },
+          { href: "/about/", label: "About" },
+          { href: CV, label: "Résumé, PDF", external: true },
+        ]}>
+          <p>
             Full-stack developer in Tashkent. I build the software a business runs on: AI that answers customers in their DMs,
             QR-verified lab certificates, an export ERP, and the admin panels behind them.
           </p>
-          <ul className="hero-links">
-            <li><Link href="/work/">Selected work</Link></li>
-            <li><Link href="/about/">About</Link></li>
-            <li><a href={CV} target="_blank" rel="noopener">Résumé, PDF</a></li>
-          </ul>
-        </div>
+        </Lead>
       </section>
 
-      <section className="block" aria-labelledby="work-h">
-        <div className="wrap">
-          <Sec id="work-h" title="Work" note={String(projects.length).padStart(2, "0")} />
-          <WorkIndex />
-        </div>
-      </section>
-
-      <section className="block" id="stack" aria-labelledby="stack-h">
-        <div className="wrap">
-          <Sec id="stack-h" title="Stack" />
-          <p className="big-line reveal">{STACK.join(", ")}.</p>
-        </div>
+      <section className="block" aria-label="Work">
+        <WorkIndex />
       </section>
 
       <Contact />

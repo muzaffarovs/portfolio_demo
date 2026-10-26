@@ -33,7 +33,7 @@ export const projects: Project[] = [
       "Frutera: an ERP for an agricultural exporter. Reads customs declarations, waybills and Telegram messages into shipments and payments, and reconciles every client ledger nightly.",
     summary: "ERP for an agricultural exporter. Customs papers and Telegram chats in, ledgers out.",
     lede:
-      "An ERP that replaced the spreadsheets and group chats an agricultural-export company was running on. Customs declarations, CMR waybills and invoices are read by Claude into structured shipments; plain Telegram messages become client payments and agent transfers; and every night a reconciliation pass compares each client's card against the shared sheet and reports what moved.",
+      "An ERP for an agricultural exporter. Claude reads customs declarations, waybills and Telegram messages into shipments and payments, and every client ledger reconciles overnight.",
     built: [
       "Ingestion from four sources: watched Telegram groups over MTProto, the Uzbek customs portal behind an E-IMZO digital signature, Google Sheets read back for reconciliation, and a WhatsApp arrival bridge",
       "Claude-powered extraction that turns customs declarations, CMR waybills, invoices and free-text Telegram messages into shipments, client payments and agent transfers",
@@ -64,7 +64,7 @@ export const projects: Project[] = [
       "AI Avtojavob (Aylo): a comment under an Instagram post matches a keyword and the customer gets an AI-written DM in the shop's own voice. Instagram, Telegram, Facebook, WhatsApp.",
     summary: "Instagram comment matches a keyword, the customer gets an AI reply in DMs.",
     lede:
-      "An AI sales assistant for businesses flooded with social-media inquiries. A customer comments under a post, a keyword matches, and a reply written in the business's own voice lands in their DMs. Instagram, Telegram, Facebook and WhatsApp all run through one platform.",
+      "A customer comments under an Instagram post, a keyword matches, and an AI reply in the shop's own voice lands in their DMs. Instagram, Telegram, Facebook and WhatsApp in one place.",
     built: [
       "A unified platform connecting Instagram, Telegram, Facebook and WhatsApp to automate customer communication and sales workflows",
       "Automated Instagram comment detection: businesses attach keywords to posts, and a matching comment triggers an AI-written direct-message reply",
@@ -86,7 +86,7 @@ export const projects: Project[] = [
       "Sifat Nazorat for Toshkent Sinov Xizmati: scan the QR code on a certified product and see the lab record behind it. Next.js, MongoDB, Supabase Auth.",
     summary: "Scan the QR on a certified product, see the lab record behind it.",
     lede:
-      "A quality-control platform for laboratory testing and product certification. Scan the QR code on a product and a verification page, generated from the lab's database records, shows what was tested and who made it.",
+      "Quality control for Toshkent Sinov Xizmati. Scan the QR code on a certified product and see the lab record behind it.",
     built: [
       "A QR-based verification system: scanning a product's QR code opens a dynamically generated verification page",
       "Dynamic routes for every product and producer, connecting public verification pages to the underlying database records",
@@ -108,7 +108,7 @@ export const projects: Project[] = [
       "Cresta's corporate website, its Telegram bot and parts of the CRM behind client management, frontend to deployment.",
     summary: "Corporate site, Telegram bot and CRM work for a new development company.",
     lede:
-      "Helped build the digital infrastructure of a newly founded development company: its corporate website, a Telegram bot for communication and workflows, and the CRM behind client management.",
+      "The website, Telegram bot and CRM work for Cresta, a new development company, from first commit to production.",
     built: [
       "The corporate website, the company's primary public-facing web presence",
       "A Telegram bot that supports communication and business workflows",
@@ -130,7 +130,7 @@ export const projects: Project[] = [
       "The Toshkent Sinov Xizmati website at t-sx.uz: news CMS, photo gallery and an admin panel the staff run themselves.",
     summary: "Company site with a news CMS and gallery the staff update themselves.",
     lede:
-      "The official website for a testing-services company: a news CMS, a photo gallery of facilities and events, and an admin interface that keeps public information current.",
+      "The website of Toshkent Sinov Xizmati, with a news CMS and a photo gallery the staff run themselves.",
     built: [
       "The official corporate website presenting the company's services, activities and organisational information",
       "A dynamic news and content management system run from a dedicated admin interface",
