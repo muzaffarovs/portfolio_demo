@@ -3,19 +3,29 @@ import Link from "next/link";
 import Contact from "@/components/Contact";
 import JsonLd from "@/components/JsonLd";
 import { projects } from "@/lib/projects";
-import { CV, EMAIL, GITHUB, LINKEDIN, NAME, NAME_VARIANTS, OG_IMAGE, PERSON_ID, SITE, TELEGRAM, WEBSITE_ID, breadcrumbs, person } from "@/lib/site";
+import { CV, NAME, OG_IMAGE, PERSON_ID, SITE, WEBSITE_ID, breadcrumbs, person } from "@/lib/site";
 
-const title = "About Rajab Muzaffarov — Full-Stack Developer, Tashkent";
+const title = "About";
 const description =
-  "Who is Rajab Muzaffarov? A full-stack developer from Tashkent, Uzbekistan with 2+ years building production web apps with React, Next.js and TypeScript. Projects, stack and contacts.";
+  "Rajab Muzaffarov, full-stack developer in Tashkent. Two years of production work in React, Next.js and TypeScript, currently at Cresta.";
 
 export const metadata: Metadata = {
-  title: { absolute: title },
+  title,
   description,
   alternates: { canonical: "/about/" },
-  openGraph: { type: "profile", url: "/about/", title, description, images: [OG_IMAGE], firstName: "Rajab", lastName: "Muzaffarov", username: "muzaffarovs" },
-  twitter: { title, description },
+  openGraph: { type: "profile", url: "/about/", title: `${title} · ${NAME}`, description, images: [OG_IMAGE], firstName: "Rajab", lastName: "Muzaffarov", username: "muzaffarovs" },
+  twitter: { title: `${title} · ${NAME}`, description },
 };
+
+const stack: [string, string][] = [
+  ["Frontend", "React, Next.js, TypeScript, Tailwind CSS, shadcn/ui"],
+  ["State & forms", "Redux Toolkit, Zustand, TanStack Query, React Hook Form, Zod"],
+  ["Backend", "Node.js, Express, REST APIs"],
+  ["Data", "PostgreSQL, MongoDB, Supabase"],
+  ["Auth", "Supabase Auth, JWT, HTTP-only cookies"],
+  ["Automation", "AI APIs, n8n, Telegram Bot API"],
+  ["Shipping", "Git, Docker, Vercel, Cloudflare, Linux"],
+];
 
 export default function About() {
   return (
@@ -25,63 +35,53 @@ export default function About() {
           "@type": ["AboutPage", "ProfilePage"],
           "@id": `${SITE}/about/#page`,
           url: `${SITE}/about/`,
-          name: title,
+          name: `${title} · ${NAME}`,
           description,
           isPartOf: { "@id": WEBSITE_ID },
           mainEntity: { "@id": PERSON_ID },
-          dateModified: "2026-10-22",
+          dateModified: "2026-10-26",
         },
         person,
         breadcrumbs([{ name: "About", path: "/about/" }]),
       ]} />
       <header className="wrap page-head">
-        <ol className="crumbs"><li><Link href="/">{NAME}</Link></li><li>About</li></ol>
-        <p className="eyebrow">About</p>
+        <ol className="crumbs"><li><Link href="/">Home</Link></li><li>About</li></ol>
         <h1 className="page-title">Rajab <span>Muzaffarov</span></h1>
+        <p className="gloss" lang="uz-Cyrl">Ражаб Музаффаров</p>
         <p className="page-lede">
-          I&apos;m <b>Rajab Muzaffarov</b>, a full-stack developer based in Tashkent, Uzbekistan. For more than two years I&apos;ve built production web
-          applications with React, Next.js and TypeScript: AI-powered customer communication, laboratory quality-control platforms, an
-          export-logistics ERP, CRMs and corporate websites.
+          Full-stack developer in Tashkent. I&apos;ve been shipping production web apps for a little over two years, mostly React and
+          Next.js in TypeScript, with Node and Postgres or MongoDB behind them.
         </p>
-        <ul className="names" aria-label="Other spellings of my name">
-          {NAME_VARIANTS.filter(n => n !== "muzaffarovs").map(n => <li key={n} lang={!/[а-я]/i.test(n) ? undefined : n.includes("Раджаб") ? "ru" : "uz-Cyrl"}>{n}</li>)}
-        </ul>
       </header>
 
-      <section className="wrap section">
-        <dl className="qa">
-          <div className="reveal">
-            <dt>Who is Rajab Muzaffarov?</dt>
-            <dd>Rajab Muzaffarov is a full-stack web developer from Tashkent, Uzbekistan. He works across the frontend and backend, from the
-              interface people click to the APIs, databases and deployments behind it, and has shipped platforms for companies including
-              Cresta and Toshkent Sinov Xizmati.</dd>
-          </div>
-          <div className="reveal">
-            <dt>What does he build?</dt>
-            <dd>Software that runs real business workflows:{" "}
-              {projects.map((p, k) => (
-                <span key={p.slug}><Link href={`/work/${p.slug}/`}>{p.name}</Link> ({p.category}){k < projects.length - 1 ? ", " : "."}</span>
-              ))}
-            </dd>
-          </div>
-          <div className="reveal">
-            <dt>Which technologies?</dt>
-            <dd>JavaScript and TypeScript; React, Next.js, Tailwind CSS and shadcn/ui on the frontend; Redux Toolkit, Zustand, TanStack Query,
-              React Hook Form and Zod for state and data; Node.js and Express.js for REST APIs; MongoDB, PostgreSQL and Supabase for data;
-              Supabase Auth, JWT and HTTP-only cookies for authentication; AI API integrations, n8n and the Telegram Bot API for automation;
-              Git, Docker, Vercel, Cloudflare and Linux for shipping.</dd>
-          </div>
-          <div className="reveal">
-            <dt>Where is he based?</dt>
-            <dd>Tashkent, Uzbekistan (UTC+5).</dd>
-          </div>
-          <div className="reveal">
-            <dt>How do I contact him?</dt>
-            <dd>Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>, message <a href={TELEGRAM} rel="me noopener" target="_blank">@urgeekboy on Telegram</a>,
-              or find him on <a href={GITHUB} rel="me noopener" target="_blank">GitHub (muzaffarovs)</a> and{" "}
-              <a href={LINKEDIN} rel="me noopener" target="_blank">LinkedIn</a>. His full résumé is <a href={CV} target="_blank" rel="noopener">here as a PDF</a>.</dd>
-          </div>
+      <section className="wrap case-body">
+        <h2 className="reveal">Now</h2>
+        <div className="prose reveal">
+          <p>I work at <a href="https://cresta.uz/" target="_blank" rel="noopener">Cresta</a>. I built the company site and its Telegram bot, worked
+            on the CRM, and built <Link href="/work/ai-avtojavob-aylo/">AI Avtojavob</Link>, which answers Instagram and Telegram customers in their DMs.
+            With Ilyosbek Axmedjanov I built <Link href="/work/frutera/">Frutera</Link>, an ERP for an agricultural exporter.</p>
+          <p>For Toshkent Sinov Xizmati I built <a href="https://t-sx.uz/" target="_blank" rel="noopener">t-sx.uz</a> and{" "}
+            <Link href="/work/sifat-nazorat/">Sifat Nazorat</Link>, the QR system that lets a buyer check a lab certificate.</p>
+        </div>
+      </section>
+
+      <section className="wrap case-body">
+        <h2 className="reveal">Projects</h2>
+        <ul className="points reveal">
+          {projects.map(p => <li key={p.slug}><Link href={`/work/${p.slug}/`}>{p.name}</Link>: {p.summary}</li>)}
+        </ul>
+      </section>
+
+      <section className="wrap case-body">
+        <h2 className="reveal">Stack</h2>
+        <dl className="rows reveal">
+          {stack.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
         </dl>
+      </section>
+
+      <section className="wrap case-body">
+        <h2 className="reveal">CV</h2>
+        <div className="prose reveal"><p>Everything above, on paper: <a href={CV} target="_blank" rel="noopener">download the PDF</a>.</p></div>
       </section>
 
       <Contact heading="p" />

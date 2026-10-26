@@ -5,11 +5,12 @@ export type Project = {
   client: string;
   category: string;
   gloss?: string;
-  /** <title> without the " · Rajab Muzaffarov" suffix */
+  /** <title> before the " · Rajab Muzaffarov" suffix */
   metaTitle: string;
   description: string;
   lede: string;
-  context: string[];
+  /** one line for the work index */
+  summary: string;
   built: string[];
   stack: string[];
   stats?: { label: string; value: string; note?: string }[];
@@ -25,15 +26,12 @@ export const projects: Project[] = [
     client: "Cresta Systems",
     category: "Export-logistics ERP",
     gloss: "Team build with Ilyosbek Axmedjanov at Cresta Systems",
-    metaTitle: "Frutera — Export-Logistics ERP by Rajab Muzaffarov",
+    metaTitle: "Frutera: export-logistics ERP",
     description:
-      "Frutera is an export-logistics ERP built by Rajab Muzaffarov and Ilyosbek Axmedjanov: Telegram, customs and Google Sheets ingestion, Claude extraction and nightly ledger reconciliation.",
+      "Frutera: an ERP for an agricultural exporter. Reads customs declarations, waybills and Telegram messages into shipments and payments, and reconciles every client ledger nightly.",
+    summary: "ERP for an agricultural exporter. Customs papers and Telegram chats in, ledgers out.",
     lede:
-      "An ERP that replaced the spreadsheets and group chats an agricultural-export company was running on. Customs declarations, CMR waybills and invoices are read by Claude into structured shipments; plain Telegram messages become client payments and agent transfers; and every night a reconciliation pass compares each client's card against the shared sheet and reports what moved. Four export lines, one system of record.",
-    context: [
-      "Before Frutera, the business ran on Telegram group chats and a shared Google Sheet. Shipments, customs paperwork, payments and agent transfers were tracked by hand across chats and spreadsheets.",
-      "The goal was a single system of record that people would actually use: one that reads the chats and documents they already send instead of asking them to change how they work.",
-    ],
+      "An ERP that replaced the spreadsheets and group chats an agricultural-export company was running on. Customs declarations, CMR waybills and invoices are read by Claude into structured shipments; plain Telegram messages become client payments and agent transfers; and every night a reconciliation pass compares each client's card against the shared sheet and reports what moved.",
     built: [
       "Ingestion from four sources: watched Telegram groups over MTProto, the Uzbek customs portal behind an E-IMZO digital signature, Google Sheets read back for reconciliation, and a WhatsApp arrival bridge",
       "Claude-powered extraction that turns customs declarations, CMR waybills, invoices and free-text Telegram messages into shipments, client payments and agent transfers",
@@ -49,7 +47,7 @@ export const projects: Project[] = [
       { label: "Endpoints", value: "150" },
       { label: "Services", value: "6", note: "on one 2 GB box" },
     ],
-    role: "Full-stack developer, team build with Ilyosbek Axmedjanov",
+    role: "Full-stack developer",
     team: "Ilyosbek Axmedjanov",
   },
   {
@@ -59,15 +57,12 @@ export const projects: Project[] = [
     client: "Cresta",
     category: "AI sales automation",
     gloss: "“Avtojavob” is Uzbek for auto-reply",
-    metaTitle: "AI Avtojavob / Aylo — AI Sales Automation by Rajab Muzaffarov",
+    metaTitle: "AI Avtojavob (Aylo): AI replies for Instagram and Telegram sellers",
     description:
-      "AI Avtojavob (Aylo), built by Rajab Muzaffarov: AI sales automation that turns Instagram comments into AI direct-message replies across Instagram, Telegram, Facebook and WhatsApp.",
+      "AI Avtojavob (Aylo): a comment under an Instagram post matches a keyword and the customer gets an AI-written DM in the shop's own voice. Instagram, Telegram, Facebook, WhatsApp.",
+    summary: "Instagram comment matches a keyword, the customer gets an AI reply in DMs.",
     lede:
       "An AI sales assistant for businesses flooded with social-media inquiries. A customer comments under a post, a keyword matches, and a reply written in the business's own voice lands in their DMs. Instagram, Telegram, Facebook and WhatsApp all run through one platform.",
-    context: [
-      "Shops that sell through Instagram and Telegram get the same questions hundreds of times a day: how much is it, is it in stock, do you deliver. Every unanswered comment is a lost sale, and answering by hand doesn't scale.",
-      "AI Avtojavob gives those businesses one platform that watches their channels, recognises buying intent and answers in their own tone, so the conversation moves to DMs while the customer is still interested.",
-    ],
     built: [
       "A unified platform connecting Instagram, Telegram, Facebook and WhatsApp to automate customer communication and sales workflows",
       "Automated Instagram comment detection: businesses attach keywords to posts, and a matching comment triggers an AI-written direct-message reply",
@@ -84,15 +79,12 @@ export const projects: Project[] = [
     client: "Toshkent Sinov Xizmati",
     category: "Quality-control platform",
     gloss: "Uzbek for “quality control”",
-    metaTitle: "Sifat Nazorat — QR Quality-Control Platform by Rajab Muzaffarov",
+    metaTitle: "Sifat Nazorat: QR verification for lab certificates",
     description:
-      "Sifat Nazorat, built by Rajab Muzaffarov for Toshkent Sinov Xizmati: a lab quality-control platform with QR-code verification pages, on Next.js and MongoDB.",
+      "Sifat Nazorat for Toshkent Sinov Xizmati: scan the QR code on a certified product and see the lab record behind it. Next.js, MongoDB, Supabase Auth.",
+    summary: "Scan the QR on a certified product, see the lab record behind it.",
     lede:
-      "A quality-control platform for laboratory testing and product certification. Scan the QR code on a product and a verification page, generated from the lab's database records, shows what was tested and who made it. It was designed around how the lab actually works, not as a static brochure site.",
-    context: [
-      "A test certificate is only useful if a buyer can trust it. Paper certificates are easy to copy and hard to check, and a laboratory's records live in its own systems where the public can't see them.",
-      "Sifat Nazorat connects the two: each certified product carries a QR code, and scanning it opens a public verification page generated from the lab's own database records.",
-    ],
+      "A quality-control platform for laboratory testing and product certification. Scan the QR code on a product and a verification page, generated from the lab's database records, shows what was tested and who made it.",
     built: [
       "A QR-based verification system: scanning a product's QR code opens a dynamically generated verification page",
       "Dynamic routes for every product and producer, connecting public verification pages to the underlying database records",
@@ -109,15 +101,12 @@ export const projects: Project[] = [
     nameSuffix: "from day one",
     client: "Cresta · Uzbekistan",
     category: "Website, Telegram bot and CRM",
-    metaTitle: "Cresta — Website, Telegram Bot and CRM by Rajab Muzaffarov",
+    metaTitle: "Cresta: website, Telegram bot and CRM",
     description:
-      "Rajab Muzaffarov helped build the digital infrastructure of Cresta, a new development company in Uzbekistan: its corporate website, a Telegram bot and the CRM behind client management.",
+      "Cresta's corporate website, its Telegram bot and parts of the CRM behind client management, frontend to deployment.",
+    summary: "Corporate site, Telegram bot and CRM work for a new development company.",
     lede:
-      "Helped build the digital infrastructure of a newly founded development company: its corporate website, a Telegram bot for communication and workflows, and the CRM behind client management. Frontend to backend, development to deployment.",
-    context: [
-      "A brand-new company needs to look established from its first day and needs internal tools before it has an internal team to build them.",
-      "I worked across the stack to give Cresta its public face and the systems behind it, from the first commit to production.",
-    ],
+      "Helped build the digital infrastructure of a newly founded development company: its corporate website, a Telegram bot for communication and workflows, and the CRM behind client management.",
     built: [
       "The corporate website, the company's primary public-facing web presence",
       "A Telegram bot that supports communication and business workflows",
@@ -134,20 +123,16 @@ export const projects: Project[] = [
     nameSuffix: "corporate site",
     client: "Toshkent Sinov Xizmati",
     category: "Corporate website and CMS",
-    metaTitle: "T-SX Corporate Website — Toshkent Sinov Xizmati, by Rajab Muzaffarov",
+    metaTitle: "T-SX: Toshkent Sinov Xizmati website",
     description:
-      "The official website of Toshkent Sinov Xizmati (T-SX), built by Rajab Muzaffarov: a news CMS, photo gallery and admin interface that keeps the company's public information current.",
+      "The Toshkent Sinov Xizmati website at t-sx.uz: news CMS, photo gallery and an admin panel the staff run themselves.",
+    summary: "Company site with a news CMS and gallery the staff update themselves.",
     lede:
-      "The official website for a testing-services company: a news CMS, a photo gallery of facilities and events, and an admin interface that keeps public information current. Structured to grow into CRM and internal workflows.",
-    context: [
-      "Toshkent Sinov Xizmati needed a website its own staff could keep up to date without calling a developer for every announcement.",
-      "The site presents the company's services, activities and organisational information, and is built to grow into communication and CRM tooling for internal workflows.",
-    ],
+      "The official website for a testing-services company: a news CMS, a photo gallery of facilities and events, and an admin interface that keeps public information current.",
     built: [
       "The official corporate website presenting the company's services, activities and organisational information",
       "A dynamic news and content management system run from a dedicated admin interface",
       "A photo gallery showcasing the company's activities, facilities and events",
-      "A structure ready for ongoing communication and CRM functionality",
     ],
     stack: ["News CMS", "Photo gallery", "Admin panel"],
     role: "Full-stack developer",
@@ -158,20 +143,17 @@ export const projects: Project[] = [
     name: "Fimtext",
     client: "Textile testing & QC laboratory",
     category: "Landing page",
-    metaTitle: "Fimtext — Textile Laboratory Landing Page by Rajab Muzaffarov",
+    metaTitle: "Fimtext: textile lab landing page",
     description:
-      "The official landing page for Fimtext, a textile testing and quality-control laboratory, built by Rajab Muzaffarov with clear information architecture on desktop and mobile.",
+      "Landing page for Fimtext, a textile testing and quality-control laboratory: services, capabilities and contacts, on desktop and mobile.",
+    summary: "Landing page for a textile testing lab.",
     lede:
-      "The landing page for a textile testing and quality-control lab, presenting its services, capabilities and company information with clear information architecture on desktop and mobile.",
-    context: [
-      "Fimtext's clients are manufacturers who need to know quickly whether the lab can test what they make. The page has to answer that in seconds, on whatever device they are holding.",
-    ],
+      "The landing page for a textile testing and quality-control lab, with its services, capabilities and contacts, built to read well on a phone.",
     built: [
       "The official landing page for the laboratory",
-      "A responsive, modern interface presenting the lab's services, capabilities and company information",
-      "Clear information architecture and a consistent experience across desktop and mobile",
+      "Services, capabilities and company information, laid out for desktop and mobile",
     ],
-    stack: ["Landing page", "Responsive UI", "Information architecture"],
+    stack: ["Landing page", "Responsive UI"],
     role: "Full-stack developer",
   },
 ];

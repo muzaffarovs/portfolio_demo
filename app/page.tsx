@@ -16,7 +16,7 @@ const Letters = ({ text, from }: { text: string; from: number }) => (
 );
 
 const CaseLink = ({ slug, label }: { slug: string; label: string }) => (
-  <Link className="case-link" href={`/work/${slug}/`}>Read the {label} case study <span className="arr" aria-hidden="true">→</span></Link>
+  <Link className="case-link" href={`/work/${slug}/`}>More on {label} <span className="arr" aria-hidden="true">→</span></Link>
 );
 
 /* Containers the demo loops rewrite are rendered as raw HTML so React never reconciles them. */
